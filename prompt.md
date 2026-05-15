@@ -27,3 +27,25 @@ Csinálj nekem egy helo simulation példát mert jelenleg ez nincs megvalósulva
 
 **5. Prompt - Második hét**  
 
+Implementáld a log-distance + log-normal shadowing modellt Pythonban: pl(d), rssi(d). Javasolj paramétereket (n, sigma). Majd adj unit teszt ötleteket a csatorna modellre: monotonicitás, határértékek (d→d0), seed hatás. 
+
+**6. Prompt - Második hét**  
+
+Meg tudod csinálni a határérték, monotonicitás teszteket valamint a reprodukálhatóságra illetve véletlenszerűségre vonatkozó teszteket. Meg tudod adni a futtatási kódot. 
+
+**7. Prompt - Második hét**  
+
+Készíts egy kísérletet: PRR(d) görbe több sigma értékre; hogyan ábrázoljam?
+
+
+Ezekből mindegyik teljesül, át tudod nézni te is gyorsan a kódot?
+
+**8. Prompt - Második hét**
+
+• channel modul: PRR(distance) + shadowing opció. ✅
+• Egy ábra: PRR vs távolság (legalább 2 paraméter beállítással). ✅
+• Validálás: kézi számítás 2 ponton dokumentálva ❌
+
+**9. Prompt - Második hét**
+
+Be tudsz tenni a chaneles függvényhívásokhoz egy alap kikommentelt számítás részt ahova a kézzel számolt eredményeket is majd be tudom helyettesíteni? Olyat hogy matematikai művelet = matematikai művelet behelyettesített számokkal eredmény. Ki tudod te is számolni hogy ellenőrizzem az én eredményemet a tiéddel?
