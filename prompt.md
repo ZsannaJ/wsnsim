@@ -774,3 +774,51 @@ experiments/run_federated.py, models/federated.py
 **MI válasz lényege:**
 
 Checklist a szempontokról és hogy mindegyik megtalálható a model szerint az elkészült fájlokban
+
+### 45. Prompt - Tizenharmadik hét
+
+**Prompt (röviden):**
+
+Készíts sweep framework-öt: param grid → futások → CSV összegzés → Pareto szűrés. Adj kódvázat és tesztötleteket.  mely 3-5 paramétert érdemes sweepelni és milyen tartományokban? 
+
+**MI válasz lényege:**
+
+Melyik 3-5 paramétert érdemes sweepelni? (A Kísérletterv)
+
+Ahhoz, hogy egy klasszikus WSN hálózati trade-offot (Megbízhatóság vs. Energia) vizsgáljunk anélkül, hogy a gépünk napokig számolna, a következő paramétereket és szűkített tartományokat javaslom:
+
+- retry_limit (Újraküldések száma az ARQ-ban): [0, 1, 3, 5] -> Mennyire erőszakosan próbáljuk átküldeni a csomagot?
+- tx_power_dbm (Adási teljesítmény): [-10, 0, 5] -> Erősebb jel = jobb PRR, de brutális energiafogyasztás.
+- mac_max_backoffs (CSMA újrapróbálkozások): [1, 3, 5] -> Zsúfolt csatornán mennyit várjon a node?
+- (Opcionális 4. paraméter, ha az Edge AI-t vizsgálod): z_score_threshold: [1.0, 2.5, 4.0]
+
+models/optimization.py, test/test_optimization.py, experiments/run_sweep.py  alapkódjának legenerálása
+
+**Döntésem / módosításaim:**
+
+Kódfájlok átnézése, tisztítása, tesztek és kísérlet futtatása valamint a fellépő apró hibák javítása
+
+### 46. Prompt - Tizenharmadik hét
+
+**Prompt (röviden):**
+
+Generálj reproducibility checklistet a végső beadás előtti ellenőrzéshez.
+
+**Edit:**
+
+Generálj reproducibility checklistet a végső beadás előtti ellenőrzéshez. Meg tudod adni md formában hogy könnyebb legyen felhasználnom? 
+
+### 47. Prompt - Tizenharmadik hét
+
+**Prompt (röviden):**
+
+Nézd át a fájlokat hogy biztosan megfelelnek e a megadott szempontoknak, és az említett hibák se fordulnak elő benne.
+
+Tipikus hibák és gyors ellenőrzések
+• Túl nagy paramétertér (kombinatorikus robbanás) → futási idő elszáll.
+• Pareto-szűrés rossz (dominancia definíció hibás)
+• Ábrák nincsenek felcímkézve (tengely, egység, caption).
+
+Heti leadandó / DoD
+• optimization: sweep + Pareto front kiválasztás.
+• Config dump + reproducibility checklist kipipálva
