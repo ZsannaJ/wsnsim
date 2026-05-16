@@ -657,3 +657,52 @@ test_negative_case_and_energy_overhead() függvény kódja
 
 A test_negative_case_and_energy_overhead() tuttatása során fellépő hibák javítása, biztosítása annak hogy az idő nem folyhat visszafelé
 
+### 38. Prompt - Tizenegyedik hét
+
+**Prompt (röviden):**
+
+Adj ötleteket idősor feature-ökre anomália detektáláshoz (statisztikai + egyszerű ML). Implementálj egy baseline detektort (pl. z-score, EWMA) és definiálj metrikákat (FP/FN, commsaved).
+
+**MI válasz lényege:**
+
+Ötletek idősoros (Time-Series) Feature-ökre Edge eszközökön, Baseline Detektor Implementációja models/edge_ai.py kóddal
+
+**Döntésem / módosításaim:**
+
+Rektam a hibák ellen védelmet mint a Ground truth a generátorban, és a paraméterek a konstruktorban
+
+### 39. Prompt - Tizenegyedik hét
+
+**Prompt (röviden):**
+
+Hogyan logoljam a hiperparamétereket és seed-et a detektor kísérleteknél? Meg tudod írni ezt a kísérletet ami megméri és ábrázolja, hogy a threshold paraméter változtatásával hogyan mozog a Communication Saved (Spórolás) vs. a False Positive (Fals Riasztás) aránya. 
+
+**MI válasz lényege:**
+
+A legprofibb mérnöki megoldás (amit a szilabusz is javasol ), ha minden kísérlet futtatásakor automatikusan kigenerálsz egy config_dump.json fájlt az eredmények és az ábrák mellé...
+experiments/run_edge_ai.py alaprogramjának a legenerálása
+
+**Döntésem / módosításaim:**
+
+Kód átnézése és letisztítása, kód futatása és eredmények ellenőrzése.
+
+### 40. Prompt - Tizenegyedik hét
+
+**Prompt (röviden):**
+
+Át tudod nmézni a következő fájlokat hogy a tartalmuk eleget tesz e a megemlyített szempontoknak?
+Tipikus hibák és gyors ellenőrzések
+• Nincs ground truth → nem tudod FP/FN-t mérni.
+• A kommunikáció spórolás definíciója nincs rögzítve (byte? packet? radio on-time?).
+• A detektor paraméterei nincsenek a configban → irreprodukálható.
+Heti leadandó / DoD
+• edge_ai modul: jel generátor + detektor + mérés.
+• Egy grafikon: communication saved vs false positive (vagy ROC-szerű).
+
+**Kontextus:**
+
+experiments/run_edge_ai.py, models/edge_ai.py
+
+**MI válasz lényege:**
+
+Checklist a felsorolt szempontokról és hogy megtalálta e őket a fájlokban

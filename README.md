@@ -186,3 +186,41 @@ Seed kezelése: Minden sztochasztikus folyamat a numpy.random.default_rng(seed) 
 Output fájlok helye: A kísérleti futások által generált vizualizációk (PNG diagramok) a reports/figures/ könyvtárba mentődnek.
 
 Promptlog: A fejlesztés során hozott mérnöki MI-döntések a prompt.md fájlban vannak vezetve.
+
+# Harmadik mérföldkő
+
+## WSN Threat Checklist (Fenyegetési Modell) a wsnsim-hez
+
+A WSN hálózatok biztonsági modellje a fizikai hozzáférés hiánya és a nyílt rádiócsatorna miatt egészen speciális. Íme a projektünkre szabott checklist:
+
+**Védendő Értékek (Assets):**
+
+- Szenzoradatok (Integritás és Hitelesség): A Sink-nek biztosnak kell lennie abban, hogy a kapott riasztás/adat valós, és egy legitim node-tól származik.
+
+- Hálózati rendelkezésre állás (Availability): A hálózatnak képesnek kell lennie adatot továbbítani a Sink felé.
+
+- A node-ok energiája (Battery life): A szenzorok legértékesebb erőforrása. Ha lemerítik őket, a hálózat (vagy egy része) meghal.
+
+**A Támadó (Attacker Model):**
+
+- Kívülálló (Outsider): Nincsenek meg a hálózati titkosító kulcsai. Csak lehallgatni (sniffing), zavarni (jamming) vagy rögzített üzeneteket visszajátszani (replay) tud.
+
+- Belső támadó (Insider): Fizikailag elfogott és kompromittált node. Ismeri a kulcsokat, képes hamis adatokat generálni vagy a routingot manipulálni (pl. Sinkhole attack).
+
+- Erőforrások: Mote-class (egy másik szenzor a támadó) vs. Laptop-class (végtelen energiájú, erős antennával rendelkező támadó).
+
+**Támadási Felület (Attack Surface):**
+
+- Fizikai/MAC réteg: Folyamatos zavarás (Jamming) vagy szándékos ütközések generálása (Collision induction), ami újraküldésekre kényszeríti a node-okat, lemerítve az akkumulátorokat.
+
+- Routing réteg: Hamis útvonalak hirdetése. Például a támadó azt hazudja, hogy ő a Sink (Sinkhole attack), így minden forgalmat magához vonz és eldob (Blackhole attack).  
+
+- Adatkapcsolat: Visszajátszásos támadás (Replay Attack). A támadó lehallgat egy tegnapi "Tűzriadó!" csomagot, és ma újra besugározza a hálózatba.
+
+**Védekezések (Mitigations):**
+
+- Integritás védelem: Message Authentication Code (MAC/MIC) hozzáadása a csomaghoz.
+
+- Replay védelem: Szekvenciaszámok (Sequence Numbers) vagy Nonce-ok (egyszer használatos véletlen számok) beágyazása a csomagokba.  
+
+- Titkosítás: A payload titkosítása (bár ez önmagában nem véd a replay vagy jamming ellen).
