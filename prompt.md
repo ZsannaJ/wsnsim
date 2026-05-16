@@ -297,5 +297,67 @@ Heti leadandó / DoD
 
  Checklist a megadott pontok ellenörzéséről és hogy mennyire teljeasítik a feltételt, test_mac.py javítási javaslatok
 
+ ### 19. Prompt - Ötödik hét
 
+**Prompt (röviden):**
+
+ Implementálj topológia generátort: random uniform, grid, és egy egyszerű cluster modell. Adj seedet és paramétereket.
+ Adj ötleteket connectivity tesztekre: van-e út a sinkhez? hány komponens? átlagos degree?
+ A generálás során vedd figyelembe a következő szempontokat és lehetséges hibákat is.
+ Tipikus hibák és gyors ellenőrzések
+• A random deployment seed nélküli.
+• Hatótáv alapú link: egységek és távolságszámítás hibás.
+• A vizualizáció nem tartalmaz tengelyt/scale-t/legend-et.
+Szempontok amik elvártak
+• topology modul: legalább 2 deployment stratégia + neighbor graph.
+• Összefüggőség teszt + 1 ábra seed paraméterekkel.
+
+ **MI válasz lényege:**
+
+ A generátor osztályunk rögtön a numpy.random.default_rng(seed) inicializálásával fog kezdeni
+ Szigorúan az Euklideszi távolságképletet ($d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$) fogjuk használni, ügyelve arra, hogy minden méterben (m) legyen megadva.
+ models/topology.py alapkódja, és ajánlások tesztelésre
+
+   **Döntésem / módosításaim:**
+  
+  Kódok átolvasása és tisztogatása pár helyen. Tesztötletek átnézése a kód alapján.
+
+ ### 20. Prompt - Ötödik hét
+
+**Prompt (röviden):**
+
+El tudod készíteni a test/test_topology.py fájlt az autómatikus tesztelés megoldásához amivel teszteljük az olyanokat mint hogy van e útvonal a sinkhez. És meg tudod csinálni a NetworkX vizualizációt amit ábrába lehet exportálni?
+
+ **MI válasz lényege:**
+
+ test/test_topology.py a networkx beépített gráf-algoritmusait használja fel, hogy ellenőrizze az összefüggőséget és a Sink elérhetőségét.
+ experiments/run_topology.py alapkódjának legenerálása 
  
+   **Döntésem / módosításaim:**
+
+  Kódok átnézése és felmerülő hibák kijavítása
+
+   ### 21. Prompt - Ötödik hét
+
+**Prompt (röviden):**
+
+ Át tudod nézni a következő kódokat, hogy megfelelnek e a meghatározott szempontoknak?
+
+ Tipikus hibák és gyors ellenőrzések
+• A random deployment seed nélküli.
+• Hatótáv alapú link: egységek és távolságszámítás hibás.
+• A vizualizáció nem tartalmaz tengelyt/scale-t/legend-et.
+
+Szempontok amik elvártak
+• topology modul: legalább 2 deployment stratégia + neighbor graph.
+• Összefüggőség teszt + 1 ábra seed paraméterekkel.
+
+**Kontextus:**
+experiments/run_topology.py, test/test_topology.py, models/topology.py módosított fájlai
+
+ **MI válasz lényege:**
+
+ Checklist a szempontokról és rövid összefoglaló hogy a kódok amiket küldtem valóban megvalósítjájk e azokat.
+
+
+
