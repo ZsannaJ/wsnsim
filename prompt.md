@@ -427,3 +427,56 @@ Három ajánlott lehetséges khiba kiemelése lés azoknak a célzott tesztelés
 
 test/test_routing.py összeállítása a pélákból
 
+### 26. Prompt - Hetedik hét
+
+**Prompt (röviden):**
+
+Eddig a csomagjainkat csak "vakul" kiküldtük a rádióba. Ha a csatorna zajos volt, vagy a távolság miatt alacsony volt a PRR, a csomag egyszerűen elveszett a levegőben. Ennek a problémának a megoldására tudsz kgenerálni egy megbízhatóságért felelős réteget ARQ mechanizmussal.
+
+ **MI válasz lényege:**
+
+models/reliability.py alakódja
+
+**Döntésem / módosításaim:**
+
+Kód átnézése és tisztítása
+
+### 27. Prompt - Hetedik hét
+
+**Prompt (röviden):**
+
+Milyen eseményeket ütemezzek (timeout)? Tervezd meg a paraméter sweep-et retry_limit és backoff tartományokra. Milyen grafikonokat rajzoljak? Generálj teszteket amik a megbízhatóságot ellenőrzik: Ha megjön az ACK a timeout elött ne legyen vújraküldés, és hogy mi van ha sosem jön meg az ACK
+
+ **MI válasz lényege:**
+
+Milyen eseményeket ütemezzek (timeout)? összefoglalása, test/test_reliability.py, experiments/run_reliability.py alapkódok generálása, a grafikonon várt eredmények leírása.
+
+**Döntésem / módosításaim:**
+
+Tesztek és experiment kódok átnézése és letisztítása, futtatása, a futás során fellépő hibák kijavítása.
+
+
+### 27. Prompt - Hetedik hét
+
+**Prompt (röviden):**
+
+Át tudod nézni a következő kódokat hogy megfelelnek e a megadott szempontoknak és nem jelenik meg bennük a sűrűn előforduló hibák egyike sem?
+ipikus hibák és gyors ellenőrzések
+• Timeout túl kicsi/nagy: irreális viselkedés.
+• ACK-ot ugyanúgy kezeled, mint data packet-et (méret, energia) - legyen dokumentálva.
+• A PDR javul, de nem méred az energia többletet.
+Heti leadandó / DoD
+• reliability: ACK + retry/backoff implementálva.
+• Egy kísérlet: PDR vs energia görbe különböző retry limitekkel.
+
+**Kontextus:**
+
+models/reliability.py, test/test_reliability.py, experiments/run_reliability.py
+
+ **MI válasz lényege:**
+
+Checklist a megadott szempontokról és hogy megfelelnek e az megadott fájlok.
+
+**Döntésem / módosításaim:**
+
+Egyszerűsítettem: Az ACK csomagok visszaküldésének extra energia- és időköltségét (mivel azok mérete elhanyagolhatóan kicsi az adatcsomagokhoz képest) a jelenlegi ARQ szimulációban nem integráltam a fogyasztási modellbe.
