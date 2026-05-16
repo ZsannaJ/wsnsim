@@ -1,0 +1,18 @@
+{
+    "config": {
+        "seed": 42,
+        "simulation_time_s": 100.0,
+        "nodes_count": 10,
+        "retry_limit": 3,
+        "aggregation_threshold": 1.0,
+        "security_enabled": true,
+        "edge_ai_threshold": 3.0
+    },
+    "results": {
+        "total_measurements": 1000,
+        "packets_sent": 48,
+        "bandwidth_saved_percent": 95.19999999999999,
+        "blocked_attacks": 4,
+        "total_energy_joule": 0.1368577799999993
+    }
+}
