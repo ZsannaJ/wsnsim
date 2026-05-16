@@ -560,4 +560,61 @@ models/sync_localization.py, test_sync_localization.py, experiments/run_localiza
 
  Checklist a megadott szempontokból és hogy megfelel e a kód az adott pontnak.
 
- 
+### 32. Prompt - Kilencedik hét
+
+**Prompt (röviden):**
+
+Készíts két aggregációs stratégiát: (1) nyers adat továbbítás, (2) fa menti átlag + delta kódolás. Milyen interfészt használjak?
+
+ **MI válasz lényege:**
+
+models/aggregation.py generálása
+
+**Döntésem / módosításaim:**
+
+A kódodt átnéztem és letisztítottam
+
+### 33. Prompt - Kilencedik hét
+
+**Prompt (röviden):**
+
+Tervezd meg a kísérletet: hogyan mérjem a kommunikáció csökkenést és az aggregáció okozta hibát (pl. MSE)? Javasolj riport struktúrát 1 oldalas kísérleti összefoglalóhoz.
+
+ **MI válasz lényege:**
+
+A Kísérlet Megtervezése: Kommunikáció vs. Hiba (MSE)
+
+Hogyan mérjük?
+
+    A 'Ground Truth' (Valós adat) generálása: Szimulálunk egy lassan változó fizikai jelenséget, például a hőmérsékletet. Erre a legjobb egy szinuszgörbe, amire egy kis véletlen zajt teszünk (így realisztikus). Ezt hívjuk valós adatnak.
+
+    Kommunikációs költség (TX Count):...
+
+experiments/run_aggregation.py alapkódjának a legenerálása
+
+week09_aggregation.md riporthoz tartalmi pontok ajánlása, alap szerkezet legenerálása
+
+**Döntésem / módosításaim:**
+
+experiments/run_aggregation.py átnézése, futtatása, week09_aggregation.md összeállítása az ajánlott pontok alapján
+
+### 34. Prompt - Kilencedik hét
+
+**Prompt (röviden):**
+
+Tudsz generálni egy tesztfilet ami a következő gyakran előfotrduló hibákra ellenőrzi a korábban létrehozott kódot?
+
+Tipikus hibák és gyors ellenőrzések
+• Nem definiálod, mi a 'hiba' (ground truth).
+• Aggregációs függvény nem asszociatív/kommutatív → függ a fa struktúrától (dokumentáld).
+• Delta-kódolásnál nincs reset / overflow kezelve (ha modellezed).
+
+ **MI válasz lényege:**
+
+test/test_aggregation.py alapkódjának létrehozása
+
+**Döntésem / módosításaim:**
+
+test/test_aggregation.py kóddjának átnézése, tisztítása, hibák javítása
+
+
