@@ -359,5 +359,71 @@ experiments/run_topology.py, test/test_topology.py, models/topology.py módosít
 
  Checklist a szempontokról és rövid összefoglaló hogy a kódok amiket küldtem valóban megvalósítjájk e azokat.
 
+### 22. Prompt - Hatodik hét
 
+**Prompt (röviden):**
+
+Implementálj flooding routingot (TTL-lel) és egy sink-fát BFS alapján. Milyen adatstruktúrákat
+használjak?
+
+ **MI válasz lényege:**
+
+Flooding vs. Sink-fa összefoglalása, adatstroktúrá közötti különbségek összefoglalása.
+models/routing.py alapkódjának legenerálása.
+
+**Döntésem / módosításaim:**
+
+A generált kódok alapvető átnézése, tisztítása.
+
+### 23. Prompt - Hatodik hét
+
+**Prompt (röviden):**
+
+Milyen módszert ajánlasz a kötés kialakításához ami a szimulátor motorját köti össze az összehasonlító kísérlethez?
+
+ **MI válasz lényege:**
+
+A legjobb és legszabványosabb módszer a kötések kialakítására az Ágens-alapú (Node-centric) csomagolás...
+run_routing_compare.py létrehoására adott példakódok.
+
+**Döntésem / módosításaim:**
+
+run_routing_compare.py összerakása a példakódok alapján.
+
+### 24. Prompt - Hatodik hét
+
+
+**Prompt (röviden):**
+Írj egy ETX-szerű metrikát PRR alapján, és hogyan válasszak szülőt? 
+
+ **MI válasz lényege:**
+
+A probléma a BFS-sel, és az ETX megoldás összefoglalása képletekkel. 
+Hogyan válasszunk szülőt? Nem a legkevesebb ugrást keressük, hanem azt az utat a Sink-ig, ahol az ETX értékek összege a legkisebb. Az ETX inkább választ két rövid, tökéletes ugrást (költség = 1 + 1 = 2), mint egyetlen hosszú, bizonytalan ugrást (költség = 4). Ezt a klasszikus Dijkstra algoritmussal fogjuk megoldani a networkx segítségével!
+
+EtxTreeRouting példakódok.
+
+**Döntésem / módosításaim:**
+
+A példakódok alapján összeállítottam a EtxTreeRouting osztályt a routing.py fájlba.
+
+### 25. Prompt - Hatodik hét
+
+**Prompt (röviden):**
+ Megnéztem a kiemelt hibákat amiket ehhez a heti leckéhez ad esetleg ezekből lehetne csinálni egy teszt fájt ami ellenőrzi hogy ő ne legyen a kódban hasonló előfordulása.
+Hibák
+• Flooding végtelen ciklus (nincs TTL/seen cache).
+....
+
+**Cél:**
+
+A szilabuszban jelzett típus-hibák elkerülésére TDD megközelítést alkalmaztam. Írtam egy test_routing.py-t, ami automatizáltan ellenőrzi a flooding végtelen ciklusának elkerülését, bizonyítja a fa-routing statikus mivoltát , és validálja a fair összehasonlításhoz szükséges topológiai determinizmust."
+
+ **MI válasz lényege:**
+
+Három ajánlott lehetséges khiba kiemelése lés azoknak a célzott tesztelésére példakódok.
+
+**Döntésem / módosításaim:**
+
+test/test_routing.py összeállítása a pélákból
 
