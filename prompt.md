@@ -480,3 +480,84 @@ Checklist a megadott szempontokról és hogy megfelelnek e az megadott fájlok.
 **Döntésem / módosításaim:**
 
 Egyszerűsítettem: Az ACK csomagok visszaküldésének extra energia- és időköltségét (mivel azok mérete elhanyagolhatóan kicsi az adatcsomagokhoz képest) a jelenlegi ARQ szimulációban nem integráltam a fogyasztási modellbe.
+
+### 28. Prompt - Nyolcadik hét
+
+**Prompt (röviden):**
+
+Tudsz implementálni egy egyszerű drift modellt ahol mindegyik node órája ppm eléréssel fut? hogyan számoljam a driftet események között? Figyelj a következő szempontokra és hibákra hogy a kódban ne legyen benne a hiba és megfeleljen a szempontoknak?
+
+Tipikus hibák és gyors ellenőrzések
+• Drift képlet rossz skálázással (ppm → 1e-6).
+• Trilateráció numerikailag instabil, rossz anchor geometria esetén.
+• RSSI→distance inverz túl naiv, nincs noise model.
+
+Heti leadandó / DoD
+• sync_localization modul: drift modell + trilateráció.
+• Unit teszt: ismert pozíciók esetén kis hiba.
+
+ **MI válasz lényege:**
+
+Óra-drift és Lokalizáció összefoglalása, models/sync_localization.py, test_sync_localization.py generálása
+
+**Döntésem / módosításaim:**
+
+A szilabusz által opcionálisan kért ábra arról szól, hogy ha az RSSI értékeket $N(0, \sigma^2)$ árnyékolási zajjal (shadowing) terheljük, az exponenciális távolság-inverz miatt a távolságbecslés hibája aszimmetrikusan elszáll. Ha az RSSI jel 3 dB-t esik a zaj miatt, az algoritmus azt hiszi, a szenzor sokkal távolabb van, mint a valóságban, és a Least Squares metszéspont elcsúszik az eredeti helyéről.
+
+### 29. Prompt - Nyolcadik hét
+
+**Prompt (röviden):**
+
+Adj alternatív lokalizációs megközelítéseket és mikor nem működik az RSSI?
+
+ **MI válasz lényege:**
+
+Az RSSI (Received Signal Strength Indicator) a legolcsóbb módszer, mert minden rádió chip alapból méri, de a legpontatlanabb is. A következő esetekben drasztikusan elcsúszik a távolságbecslés:
+
+    Többutas terjedés (Multipath Fading):...
+
+Ha az RSSI nem elég jó (pl. centiméteres pontosság kell), az alábbiakat használják a WSN és IoT világában:
+
+    TOA (Time of Arrival):...
+
+### 30. Prompt - Nyolcadik hét
+
+**Prompt (röviden):**
+
+tudsz generálni egy kísérlet fájt a mély a kritériumokban szereplő ábrát legenerálja ami hol a lokalizáció hiba a zaj függvényében van?
+
+ **MI válasz lényege:**
+
+run_localization.py alapkódjának legenerálása
+
+**Döntésem / módosításaim:**
+
+A run_localization.py kód átnézése letisztítása és tesztelése
+
+### 31. Prompt - Nyolcadik hét
+
+**Prompt (röviden):**
+
+át tudod nézni a következő fájlokat hogy biztosan megfelelnek-e a nyolcadik fejezetben említett kritériumoknak illetve hogy a hibák nem fordulnak elő bennük?
+
+Tipikus hibák és gyors ellenőrzések
+
+• Drift képlet rossz skálázással (ppm → 1e-6).
+• Trilateráció numerikailag instabil, rossz anchor geometria esetén.
+• RSSI→distance inverz túl naiv, nincs noise model.
+
+Heti leadandó / DoD
+
+• sync_localization modul: drift modell + trilateráció.
+• Unit teszt: ismert pozíciók esetén kis hiba.
+• Rövid jegyzet/ábra: lokalizáció hiba a zaj függvényében (opcionális).
+
+**Kontextus**
+
+models/sync_localization.py, test_sync_localization.py, experiments/run_localization.py
+
+ **MI válasz lényege:**
+
+ Checklist a megadott szempontokból és hogy megfelel e a kód az adott pontnak.
+
+ 
