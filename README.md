@@ -224,3 +224,5 @@ A WSN hálózatok biztonsági modellje a fizikai hozzáférés hiánya és a ny�
 - Replay védelem: Szekvenciaszámok (Sequence Numbers) vagy Nonce-ok (egyszer használatos véletlen számok) beágyazása a csomagokba.  
 
 - Titkosítás: A payload titkosítása (bár ez önmagában nem véd a replay vagy jamming ellen).
+
+

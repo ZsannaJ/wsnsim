@@ -119,7 +119,7 @@ test_channel.ps kódok
 
 **MI válasz lényege:**
 
-"Természetesen! Ez egy nagyon jó gyakorlat, hiszen a szimulátorokban (és a tesztekben) a "black box" (fekete doboz) szerű működés helyett mindig látnunk kell a pontos matematikát.
+"Természetesen! Ez egy nagyon jó gyakorlaSt, hiszen a szimulátorokban (és a tesztekben) a "black box" (fekete doboz) szerű működés helyett mindig látnunk kell a pontos matematikát.
 Az alábbiakban frissítettem a test_channel.py fájlodat..."
 
 **Döntésem / módosításaim:**
@@ -706,3 +706,71 @@ experiments/run_edge_ai.py, models/edge_ai.py
 **MI válasz lényege:**
 
 Checklist a felsorolt szempontokról és hogy megtalálta e őket a fájlokban
+
+### 41. Prompt - Tizenkettedik hét
+
+**Prompt (röviden):**
+
+Implementálj FedAvg szimulációt: K node lokális update, server aggregál. Milyen adatstruktúrák
+legyenek a modellekhez?
+
+**Cél:**
+
+A cél a kommunikációs trade-off vizsgálata a diszkrét eseményű szimulátorban, nem pedig a mesterséges intelligencia pontosságának maximalizálása
+
+**MI válasz lényege:**
+
+Milyen adatstruktúrák legyenek a modellekhez?
+Mivel a kommunikációs költséget (hány bájtot küldünk a rádión) akarjuk mérni, a modellünket úgy kell reprezentálnunk, hogy egyértelmű legyen a mérete...
+
+models/federated.py alapkódjának a legenerálása
+
+**Döntésem / módosításaim:**
+
+models/federated.py kódjának átnézése, letisztítása
+
+### 42. Prompt - Tizenkettedik hét
+
+**Prompt (röviden):**
+
+Írj egy run_federated.py kísérletet ami teszteli, hogy mi történik he ritkábban, mondjuk csak minden 5. lépésben kommunikálnak a node-ok a szerverrel majd kirajzolja az eredményeket egy ábrával.
+
+**MI válasz lényege:**
+
+experiments/run_federated.py generálása
+
+**Döntésem / módosításaim:**
+
+experiments/run_federated.py átolvasása, kódok letisztítása
+
+### 43. Prompt - Tizenkettedik hét
+
+**Prompt (röviden):**
+
+Adj kommunikációs költség modellt: bytes per round, rounds; hasonlítsd össze centralizált tanítással.
+
+**MI válasz lényege:**
+
+Federated Learning (FL) Kommunikációs Költségmodell és Összehasonlítás a Centralizált Tanítással
+
+### 44. Prompt - Tizenkettedik hét
+
+**Prompt (röviden):**
+
+Nézd át a kódokat hogy a következő szempontoknak megfelelnek e.
+
+Tipikus hibák és gyors ellenőrzések
+• Túl bonyolult ML modellt választasz - a cél a kommunikációs trade-off, nem a SOTA pontosság.
+• Nem rögzíted a modell méretet (paraméterek száma) → nem mérhető a költség.
+• A 'konvergencia' metrika nincs definiálva (loss? accuracy? proxy?).
+Heti leadandó / DoD
+• federated modul: FedAvg baseline + cost model.
+• Egy ábra: update periódus vs kommunikációs költség (és opcionálisan proxy accuracy)
+
+**Kontextus:**
+
+experiments/run_federated.py, models/federated.py
+
+**MI válasz lényege:**
+
+Checklist a szempontokról és hogy mindegyik megtalálható a model szerint az elkészült fájlokban
