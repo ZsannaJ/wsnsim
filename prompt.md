@@ -617,4 +617,43 @@ test/test_aggregation.py alapkódjának létrehozása
 
 test/test_aggregation.py kóddjának átnézése, tisztítása, hibák javítása
 
+### 35. Prompt - Tizedik hét
+
+**Prompt (röviden):**
+
+Generálj egy threat checklistet a wsnsim projektre: asset, attacker, attack surface, mitigations. Adj ötletet: hogyan modellezzem 'security overhead'-ként az extra byte-okat és extra CPU időt az energia modulban?
+
+ **MI válasz lényege:**
+
+WSN Threat Checklist (Fenyegetési Modell) a wsnsim-hez (asset, attacker, attack surface, mitigations)
+A szilabusz egy nagyon fontos mérnöki kérdést tesz fel: hogyan jelenítsük meg ezt a szimulátorban? Két fő költsége van a biztonságnak: Extra Byte-ok (Hálózati / MAC terhelés), Extra CPU idő (Feldolgozási késleltetés és fogyasztás)
+
+### 36. Prompt - Tizedik hét
+
+**Prompt (röviden):**
+
+Implementálj egy Replay védelmet, írj abuse-case tesztet replay attack szimulálására és védelemre (nonce/seq).
+Készíts el egy models/security.py modult a szekvenciaszámos szűrővel és a CPU overhead szimulátorával, valamint hozzá a tesztfájlt 
+
+**MI válasz lényege:**
+
+models/security.py, test/test_security.py alapkódjának a legenerálása
+
+**Döntésem / módosításaim:**
+
+A generált kódok átnézése, tisztítása futtatása és a felmerülő hibák javítása.
+
+### 37. Prompt - Tizedik hét
+
+**Prompt (röviden):**
+
+Tudsz generálni egy tesztet a test/test_security.py-hoz ami behúzza az EnergyModel-t is, és számszerűen bebizonyítja, hogy a támadás alatt a védelem nélküli node pillanatok alatt lemerül, míg a védett node megmenekül.
+
+**MI válasz lényege:**
+
+test_negative_case_and_energy_overhead() függvény kódja
+
+**Döntésem / módosításaim:**
+
+A test_negative_case_and_energy_overhead() tuttatása során fellépő hibák javítása, biztosítása annak hogy az idő nem folyhat visszafelé
 
